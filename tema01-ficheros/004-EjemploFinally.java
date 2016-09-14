@@ -13,13 +13,17 @@ import java.io.FileNotFoundException;
  */
 public class EjemploFinally {
 
-    public static void main(String[] args) throws FileNotFoundException{
-        PrintWriter printWriter = new PrintWriter("ejemplo.txt");
+    public static void main(String[] args) {
+        PrintWriter printWriter = null;
         try {
+			printWriter = new PrintWriter("ejemplo.txt");
             printWriter.println("Uno");
             printWriter.println("Dos");
             printWriter.println("Tres");
         }
+		catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
         finally{
             if (printWriter != null) {
                 printWriter.close();
