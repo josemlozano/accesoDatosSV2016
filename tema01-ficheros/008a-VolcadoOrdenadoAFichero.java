@@ -44,7 +44,7 @@ public class VolcadoOrdenadoAFichero {
                         linea = ficheroEntrada1.readLine();
                         if(linea != null){
                             palabras.add(linea);
-						}
+                        }
                     } while(linea != null);
 
                     ficheroEntrada2 = new BufferedReader(new FileReader(

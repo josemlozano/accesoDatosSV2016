@@ -31,7 +31,7 @@ public class CopiarFichero {
         }
         try {
             fileRead = new BufferedReader(
-				new FileReader(new File(name)));
+                new FileReader(new File(name)));
             
             fileWriter = new PrintWriter (name+".mayusculas");
 
@@ -44,13 +44,13 @@ public class CopiarFichero {
         }
         catch (IOException errorDeFichero) {
             System.out.println(
-				"Ha habido problemas: " +
-				errorDeFichero.getMessage() );
-		}
+                "Ha habido problemas: " +
+                errorDeFichero.getMessage() );
+        }
         finally {
             if(fileRead != null){
                 fileRead.close();
-			}
+            }
             if(fileWriter != null){
                 fileWriter.close();
             }
