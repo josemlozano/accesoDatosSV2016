@@ -1,0 +1,10 @@
+<alumnos>
+    <alumno>
+        <nombre>Ruben</nombre>
+        <apellido>Blanco</apellido>
+    </alumno>
+    <alumno>
+        <nombre>Adrián</nombre>
+        <apellido>Navarro</apellido>
+    </alumno>
+</alumnos>

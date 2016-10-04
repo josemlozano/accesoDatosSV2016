@@ -4,6 +4,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * @author Yahir Peñarrubia Farach
+ * Curso 2ºDAM Presencial
+ */
 class ReadXml extends DefaultHandler{
  
 public void procesarXml(){
@@ -14,43 +18,49 @@ public void procesarXml(){
 
             String etiquetaActual = "";
             String contenido = "";
+            boolean analizandoNombre = false, 
+                analizandoApellido = false;
 
             // Método que se llama al encontrar inicio de etiqueta: '<'
             public void startElement(String uri, String localName,
                     String qName, Attributes attributes) 
                     throws SAXException {
                 
-                // Si el nombre es "asignatura",
-                // empieza una nueva y mostramos su id
-                // Si no, memorizamos el nombre para mostrar después
                 etiquetaActual = qName;
-                if (etiquetaActual == "asignatura")
-                    System.out.println("Asignatura: " +
-                        attributes.getValue("id"));
+                if (etiquetaActual == "nombre") {
+                    analizandoNombre = true;
+                }
+                
+                if (etiquetaActual == "apellido"){
+                    analizandoApellido = true;
+                }
             }
 
             // Obtiene los datos entre '<>' y '</>'
             public void characters(char ch[], int start, int length)
                     throws SAXException {
-
-                contenido = new String(ch, start, length);
+                
+                if (analizandoNombre) {
+                    System.out.print("Nombre: " + 
+                        new String(ch, start, length));
+                    analizandoNombre = false;
+                }
+                
+                if (analizandoApellido) {
+                    System.out.println(" "+new String(ch, start, length));
+                    analizandoApellido = false;
+                }
             }
 
             // Llamado al encontrar un fin de etiqueta: '>'
             public void endElement(String uri, String localName, String qName)
                     throws SAXException {
-
-                if (etiquetaActual != "") {
-                    System.out.println("  " + etiquetaActual + 
-                        ": "+ contenido);
-                    etiquetaActual = "";
-                }
             }
         };
 
         // Cuerpo de la función: trata de analizar el fichero deseado
         // Llamará a startElement(), endElement() y character() 
-        saxParser.parse("asignaturas.xml", manejadorEventos);
+        saxParser.parse("alumnos.xml", manejadorEventos);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,7 +69,7 @@ public void procesarXml(){
 
 
 
-public class Sax1 {
+public class Sax2 {
     public static void main(String args[]) {
         ReadXml ficheroXml = new ReadXml();
         ficheroXml.procesarXml();
