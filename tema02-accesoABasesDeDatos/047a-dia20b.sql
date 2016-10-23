@@ -2,12 +2,12 @@
 -- hay en la  base de datos. Llámala desde tu programa Java 
 -- usando "SELECT".
 
-CREATE OR REPLACE FUNCTION CantidadCamaras ()
-RETURNS INTEGER AS $cantidad$
+CREATE OR REPLACE FUNCTION CantidadCamaras() RETURNS INTEGER AS
+$$
 DECLARE
     cantidad INTEGER;
 BEGIN
-   SELECT COUNT(*) INTO cantidad FROM camaras;
-   RETURN cantidad;
+    SELECT COUNT(*) INTO cantidad FROM camaras;
+    RETURN cantidad;
 END;
-$cantidad$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql;
