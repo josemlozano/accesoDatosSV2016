@@ -14,26 +14,26 @@
 -- Mónica Esteve
 
 CREATE DOMAIN tipoDescuento as numeric(3,1)
-    check ( value >= 0);
+    CHECK ( value >= 0);
     
-CREATE TABLE DESCUENTOS(
+CREATE TABLE clientes(
     codigo CHAR(4) PRIMARY KEY,
     nombre VARCHAR(60),
     descuento tipoDescuento
 );
         
-insert into descuentos values
+insert into clientes values
 ('0001', 'MONI', 50.0 );
                 
-insert into descuentos values
+insert into clientes values
 ('0002', 'INDRA', 40.0 ); 
                 
 -- redondea
-insert into descuentos values
+insert into clientes values
 ('0003', 'MONIINDRA', 50.55 );
         
  -- no se inserta       
-insert into descuentos values
+insert into clientes values
 ('0005', 'FANFAN', -50.55 );
         
-SELECT * FROM DESCUENTOS;
+SELECT * FROM clientes;
