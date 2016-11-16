@@ -38,9 +38,10 @@ public class Tareas {
                         String categoria = teclado.nextLine();
                         System.out.print("Prioridad (1 a 5)? ");
                         int prioridad = Integer.parseInt(teclado.nextLine());
-                        System.out.print("Año? ");
 
-                        //Tarea tarea = new Tarea(new Date(1996, 11, 24),"Cumpleaños","Casa",3);
+                        // Ejemplo con datos prefijados:
+                        // Tarea tarea = new Tarea(new Date(1996, 11, 24),
+                        //     "Cumpleaños","Casa",3);
                         Tarea tarea = new Tarea(
                                 new Date(anyo, mes, dia), 
                                 descripcion, categoria, prioridad);
